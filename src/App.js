@@ -32,10 +32,6 @@ const App = () => {
   const [onSort, setOnSort] = useState({ id: "", typeSort: "default" });
   const [modalOpen, setModalOpen] = useState(false);
   const [pagePaganition, setpagePaganition] = useState(1);
-  console.log(
-    "🚀 ~ file: App.js ~ line 35 ~ App ~ pagePaganition",
-    pagePaganition
-  );
   const [sexFilter, setSexFilter] = useState("");
   useEffect(() => {
     fetchData();
@@ -54,8 +50,6 @@ const App = () => {
       );
     }
   }, [sexFilter]);
-
-  useEffect(() => {}, []);
 
   const headerTable = [
     { id: "name.title", label: "Title" },
@@ -316,7 +310,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div sx={{ width: "100%" }}>
+      <div style={{ width: "100%" }}>
         <Paper sx={{ width: "100%", mb: 2 }}>
           <TableContainer sx={{ height: "80vh" }}>
             {sexFilter
