@@ -31,7 +31,7 @@ const App = () => {
   const [mouseEnter, setMouseEnter] = useState("");
   const [onSort, setOnSort] = useState({ id: "", typeSort: "default" });
   const [modalOpen, setModalOpen] = useState(false);
-  const [pagePaganition, setpagePaganition] = useState(0);
+  const [pagePaganition, setpagePaganition] = useState(1);
   console.log(
     "🚀 ~ file: App.js ~ line 35 ~ App ~ pagePaganition",
     pagePaganition
@@ -275,8 +275,8 @@ const App = () => {
   );
 
   // Xử lý sự kiện
-  const handlePagination = (e) => {
-    setpagePaganition(e.currentTarget.textContent - 1);
+  const handlePagination = (event, value) => {
+    setpagePaganition(value);
   };
   const handleChangeSexFilter = (e) => {
     setSexFilter(e.target.value);
@@ -322,14 +322,14 @@ const App = () => {
             {sexFilter
               ? renderTable(
                   [...filteredData]?.splice(
-                    pagePaganition * 20,
-                    20 * (pagePaganition + 1 - pagePaganition)
+                    (pagePaganition - 1) * 20,
+                    20 * (pagePaganition + 1)
                   )
                 )
               : renderTable(
                   [...userDataList]?.splice(
-                    pagePaganition * 20,
-                    20 * (pagePaganition + 1 - pagePaganition)
+                    (pagePaganition - 1) * 20,
+                    20 * (pagePaganition + 1)
                   )
                 )}
           </TableContainer>
@@ -360,6 +360,7 @@ const App = () => {
                 count={10}
                 page={pagePaganition}
                 size="large"
+                on
                 sx={{ display: "flex", justifyContent: "center" }}
                 onChange={handlePagination}
               />
