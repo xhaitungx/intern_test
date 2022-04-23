@@ -358,7 +358,7 @@ const App = () => {
               </FormControl>
               <Pagination
                 count={10}
-                page={{pagePaganition}}
+                page={pagePaganition}
                 size="large"
                 sx={{ display: "flex", justifyContent: "center" }}
                 onChange={handlePagination}
